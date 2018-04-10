@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.application'   //表明这是一个应用程序，可以单独运行
 
 android {
     compileSdkVersion 26
@@ -12,43 +12,40 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        release {    //生成发布版本的apk
+            minifyEnabled false   //是否进行混淆
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro' //混淆文件的位置以及混淆规则
         }
     }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-//    androidTestimplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
-//        exclude group: 'com.android.support', module: 'support-annotations'
-//    })
     androidTestImplementation 'com.android.support.test:runner:0.5'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:2.2.2'
     implementation 'com.android.support:appcompat-v7:26.+'
     testImplementation 'junit:junit:4.12'
-
-
-
-
+    //布局约束
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     //依赖注入，用于view绑定和click事件的处理
-    implementation 'com.jakewharton:butterknife:8.5.1'
+    implementation 'com.jakewharton:butterknife:8.8.1'
     //根据注解自动生成代码
-    annotationProcessor 'com.jakewharton:butterknife-implementationr:8.5.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+//Java线程切换以及异步操作框架
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.9'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
     //http网络请求框架
-    implementation 'com.squareup.retrofit2:retrofit:2.0.2'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     //okhttp日志拦截工具
     implementation 'com.squareup.okhttp3:logging-interceptor:3.5.0'
-
-    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
     //简化各个组件之间的通信
     implementation 'org.greenrobot:eventbus:3.0.0'
-
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
     //新增控件，可以直接设置圆角阴影等
     implementation 'com.android.support:cardview-v7:26.+'
     implementation 'com.android.support:design:26.+'
-
     //友盟
     implementation 'com.umeng.analytics:analytics:latest.integration'
     implementation 'com.venmo.view.tooltip:tooltip:0.1.2@aar'
