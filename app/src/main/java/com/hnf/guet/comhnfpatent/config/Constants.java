@@ -7,7 +7,7 @@ package com.hnf.guet.comhnfpatent.config;
 
 public class Constants {
 
-    //HELLO   change text again
+    //hnf very good
 
     //服务器请求地址
     public static final String HOST = "https://127.0.0.1/patent/api/";
